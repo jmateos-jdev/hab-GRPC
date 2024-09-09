@@ -1,0 +1,17 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node client.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.11.1",
+    "@grpc/proto-loader": "^0.7.13"
+  }
+}

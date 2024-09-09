@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+service ExampleService {
+  // Unary
+  rpc UnaryCall(RequestMessage) returns (ResponseMessage);
+
+  // Server Streaming
+  rpc ServerStreamingCall(RequestMessage) returns (stream ResponseMessage);
+
+  // Client Streaming
+  rpc ClientStreamingCall(stream RequestMessage) returns (ResponseMessage);
+
+  // Bidirectional Streaming
+  rpc BidirectionalStreamingCall(stream RequestMessage) returns (stream ResponseMessage);
+
+  rpc ChatBidireccional (stream Mensaje) returns (stream Mensaje);
+
+}
+
+message Mensaje {
+  string remitente = 1;
+  string contenido = 2;
+}
+
+message RequestMessage {
+  string message = 1;
+}
+
+message ResponseMessage {
+  string message = 1;
+}

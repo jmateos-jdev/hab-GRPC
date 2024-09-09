@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service ExampleService {
+
+    //Bidirectional Streaming
+    rpc BiStreamingCall(stream Mensaje) returns (stream Mensaje);
+    
+}
+
+message Mensaje {
+    string usuario = 1;
+    string message = 2;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service ExampleService {
+    
+    rpc InsertPersonCall (PersonReq) returns (MessageRes);
+    
+}
+message PersonReq {
+    string name = 1;
+}
+
+message MessageRes {
+    string message = 1;
+}

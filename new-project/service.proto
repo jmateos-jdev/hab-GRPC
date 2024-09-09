@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+service ExampleService {
+    //UNARY
+    // Envío un mensaja - Recibo un mensaje
+    rpc UnaryCall (Mensaje) returns (Mensaje); 
+    rpc InsertPersonCall (PersonReq) returns (Mensaje);
+
+    //Server Streaming
+    //Envío un mensaje - Recibo N mensajes hasta que el Server corta la comunicación
+    rpc ServerStreamingCall (StreamReq) returns (stream Mensaje); 
+
+    //Client Streaming
+    //El cliente abre conexión, envía N mensajes, recibe respuesta al finalizar la comunicación.
+    rpc ClientStreamingCall (stream Mensaje) returns (Mensaje);
+
+    //Bidirectional Streaming
+    //El cliente abre conexión, desde ese momento tanto el cliente como el server pueden enviar mensajes sin orden.option
+    //cuando el cliente finaliza la conexión, el server debe finalizar la conexión! NO HAY CALLBACK!
+    rpc BiStreamingCall(stream Mensaje) returns (stream Mensaje);
+    
+}
+
+
+message StreamReq{
+    int32 loops = 1;
+}
+
+message PersonReq {
+    string name = 1;
+}
+
+message Mensaje {
+    string usuario = 1;
+    string message = 2;
+}
